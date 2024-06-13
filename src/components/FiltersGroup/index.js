@@ -39,6 +39,29 @@ const salaryRangesList = [
   },
 ]
 
+const locationTypeList = [
+  {
+    locationId: 'HYDERABAD',
+    label: 'Hyderabad',
+  },
+  {
+    locationId: 'BANGALORE',
+    label: 'Bangalore',
+  },
+  {
+    locationId: 'DELHI',
+    label: 'Delhi',
+  },
+  {
+    locationId: 'MUMBAI',
+    label: 'Mumbai',
+  },
+  {
+    locationId: 'CHENNAI',
+    label: 'Chennai',
+  },
+]
+
 const FiltersGroup = props => {
   const renderEmploymentTypesList = () => {
     const {updateEmploymentTypesChecked} = props
@@ -56,6 +79,29 @@ const FiltersGroup = props => {
             onChange={updateTypeslist}
           />
           <label htmlFor={eachType.employmentTypeId} className="filter-label">
+            {eachType.label}
+          </label>
+        </li>
+      )
+    })
+  }
+
+  const renderLocationTypeList = () => {
+    const {updateLocationTypesChecked} = props
+
+    return locationTypeList.map(eachType => {
+      const updateTypeslist = () =>
+        updateLocationTypesChecked(eachType.locationId)
+
+      return (
+        <li className="fliters-list-item" key={eachType.locationId}>
+          <input
+            type="checkbox"
+            className="checkbox-input"
+            id={eachType.locationId}
+            onChange={updateTypeslist}
+          />
+          <label htmlFor={eachType.locationId} className="filter-label">
             {eachType.label}
           </label>
         </li>
@@ -108,6 +154,9 @@ const FiltersGroup = props => {
       {renderEmploymentTypes()}
       <hr className="separator" />
       {renderSalaryRangesTypes()}
+      <hr className="separator" />
+      <h1 className="filter-heading">Location</h1>
+      <ul className="filters-list">{renderLocationTypeList()}</ul>
     </div>
   )
 }

@@ -59,6 +59,7 @@ class Login extends Component {
           className="login-input-field"
           id="username"
           onChange={this.updateUsername}
+          placeholder="Username"
         />
       </div>
     )
@@ -77,6 +78,7 @@ class Login extends Component {
           className="login-input-field"
           id="password"
           onChange={this.updatePassword}
+          placeholder="Password"
         />
       </div>
     )
